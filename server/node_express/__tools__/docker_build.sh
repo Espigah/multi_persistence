@@ -1,3 +1,3 @@
 #!/bin/sh
-docker build -t products-server ..
+docker build -t abriciogoncalves/stock_server_node_express ..
 

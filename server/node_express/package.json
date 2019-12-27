@@ -12,10 +12,10 @@
     "start": "nodemon --exec babel-node ./index.js",
     "json": "npx json-server --watch json-server/db.json",
     "redis": "redis-commander",
-    "docker": "npm run test && docker build -t espigah/stock_server_node_express .",
-    "docker:run": "docker run -it --rm  -p 4321:4321  espigah/stock_server_node_express",
-    "docker:test": "docker build -f Dockerfile.tests.dockerfile -t espigah/stock_server_node_express_test .",
-    "docker:test:run": "docker run -it --rm  espigah/stock_server_node_express_test"
+    "docker": "npm run test && docker build -t fabriciogoncalves/stock_server_node_express .",
+    "docker:run": "docker run -it --rm  -p 4321:4321  fabriciogoncalves/stock_server_node_express",
+    "docker:test": "docker build -f Dockerfile.tests.dockerfile -t fabriciogoncalves/stock_server_node_express_test .",
+    "docker:test:run": "docker run -it --rm  fabriciogoncalves/stock_server_node_express_test"
   },
   "author": "",
   "license": "ISC",

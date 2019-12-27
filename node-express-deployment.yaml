@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.16.0 (0c01309)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: node-express
+  name: node-express
+spec:
+  selector:
+    matchLabels:
+      io.kompose.service: node-express
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: node-express
+    spec:
+      containers:
+      - env:
+        - name: DATABASE_URL_COUCH
+          value: http://docker:RABnooIBx9tSt2L2@couch:5984/products
+        - name: DATABASE_URL_MONGO
+          value: mongodb://mongo:27017/products
+        - name: DATABASE_URL_POSTGRES
+          value: postgres://docker:RABnooIBx9tSt2L2@postgres:5432/products
+        - name: DATABASE_URL_REDIS
+          value: redis://redis:6379
+        image: fabriciogoncalves/stock_server_node_express
+        name: node-express
+        ports:
+        - containerPort: 4321
+        resources: {}
+      restartPolicy: Always
+status: {}

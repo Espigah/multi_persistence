@@ -34,3 +34,5 @@ out/
 ### Node ###
 node_modules
 .nyc_output
+server/node_express/node_modules
+server/node_express/.nyc_output

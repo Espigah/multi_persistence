@@ -1,3 +1,3 @@
 #!/bin/sh
-docker build -t  espigah/stock_db_redis ..
+docker build -t  fabriciogoncalves/stock_db_redis ..
 

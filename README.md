@@ -20,8 +20,10 @@ Create a minimal app with docker-compose and multiple storage destinations
 * [Node](https://nodejs.org/en/download/)
 * [Docker](https://docs.docker.com/docker-for-windows/install/)
 * [Docker Compose](https://docs.docker.com/compose/install/)
+* [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+* [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
 
-# Running
+# Running from DOCKER
 
 ## Create docker images
 
@@ -34,6 +36,14 @@ Create a minimal app with docker-compose and multiple storage destinations
     $ dokcer-composer up
 
 ![dokcer-composer up](docs/multi_persistence_up.gif)
+
+
+# Running from KUBERNETES
+
+ $ kubectl apply -f couch-service.yaml,mongo-service.yaml,node-express-service.yaml,postgres-service.yaml,redis-service.yaml,couch-deployment.yaml,mongo-deployment.yaml,node-express-deployment.yaml,postgres-deployment.yaml,redis-deployment.yaml
+
+
+ ![kompose up](docs/multi_persistence_kubernetes_minikube.gif)
 
 # Author
 

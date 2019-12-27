@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.16.0 (0c01309)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: couch
+  name: couch
+spec:
+  selector:
+    matchLabels:
+      io.kompose.service: couch
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: couch
+    spec:
+      containers:
+      - env:
+        - name: COUCHDB_PASSWORD
+          value: RABnooIBx9tSt2L2
+        - name: COUCHDB_USER
+          value: docker
+        image: fabriciogoncalves/stock_db_couch
+        name: couch
+        ports:
+        - containerPort: 5984
+        resources: {}
+      restartPolicy: Always
+status: {}

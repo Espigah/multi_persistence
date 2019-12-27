@@ -1,6 +1,6 @@
 
 # Use the production image as base image
-FROM espigah/stock_server_node_express
+FROM fabriciogoncalves/stock_server_node_express
 
 # Copy the test files
 COPY ./*.spec.js ./*.spec.js

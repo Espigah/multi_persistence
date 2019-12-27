@@ -2,7 +2,7 @@ version: '3'
 services:
   couch:
     container_name: couch
-    image: espigah/stock_db_couch 
+    image: fabriciogoncalves/stock_db_couch 
     ports:
     - "5984:5984"  
     networks:
@@ -13,7 +13,7 @@ services:
 
   postgres:
     container_name: postgres
-    image: espigah/stock_db_postgres 
+    image: fabriciogoncalves/stock_db_postgres 
     ports:
     - "5001:5432"  
     networks:
@@ -21,7 +21,7 @@ services:
 
   mongo:
     container_name: mongo
-    image: espigah/stock_db_mongo 
+    image: fabriciogoncalves/stock_db_mongo 
     ports:
     - "5002:27017"  
     networks:
@@ -29,7 +29,7 @@ services:
 
   redis:
     container_name: redis
-    image: espigah/stock_db_redis 
+    image: fabriciogoncalves/stock_db_redis 
     command: ["redis-server", "--appendonly", "yes"]
     ports:
     - "5003:6379"  
@@ -38,7 +38,7 @@ services:
 
   node_express:
     container_name: node_express
-    image: espigah/stock_server_node_express 
+    image: fabriciogoncalves/stock_server_node_express 
     ports:
       - "5004:4321"
     networks:
