@@ -1,0 +1,75 @@
+version: '3'
+services:
+  couch:
+    container_name: couch
+    image: espigah/stock_db_couch 
+    ports:
+    - "5984:5984"  
+    networks:
+    - network_couch
+    environment:
+      COUCHDB_USER: docker
+      COUCHDB_PASSWORD: RABnooIBx9tSt2L2
+      
+  postgres:
+    container_name: postgres
+    image: espigah/stock_db_postgres 
+    ports:
+    - "5432:5432"  
+    networks:
+    - network_postgres 
+    
+  redis:
+    container_name: redis
+    image: espigah/stock_db_redis 
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+    - "6379:6379"  
+    networks:
+    - network_redis  
+
+  mongo:
+    container_name: mongo
+    image: espigah/stock_db_mongo 
+    ports:
+    - "27017:27017"  
+    networks:
+    - network_mongo 
+
+
+  node_express:
+    container_name: node_express
+    image: espigah/stock_server_node_express     
+    ports:
+      - "4321:4321"
+    depends_on: 
+      - couch 
+      - postgres 
+      - mongo 
+      - redis 
+    networks:
+      - network_couch
+      - network_postgres  
+      - network_mongo  
+      - network_redis 
+    links:
+      - couch   
+      - postgres    
+      - mongo   
+      - redis    
+    environment:
+     DATABASE_URL_COUCH: http://docker:RABnooIBx9tSt2L2@couch:5984/products
+     DATABASE_URL_POSTGRES: postgres://docker:RABnooIBx9tSt2L2@postgres:5432/products
+     DATABASE_URL_MONGO: mongodb://mongo:27017/products
+     DATABASE_URL_REDIS: redis://redis:6379
+
+      
+networks: 
+  network_couch :
+    driver: bridge
+  network_postgres :
+    driver: bridge
+  network_mongo :
+    driver: bridge
+  network_redis :
+    driver: bridge
